@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Help Corner – Admissions & Scholarships</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #1D2F63;
+      --secondary: #E84D7A;
+      --accent: #2E5DA8;
+      --light-blue: #6EA8E8;
+      --bg: #F4F4F4;
+      --white: #FFFFFF;
+      --orange: #F39A3E;
+      --green: #58A85A;
+      --purple: #6E5BC6;
+      --dark-pink: #D93D6A;
+      --card: #FFFFFF;
+      --text-dark: #1D2F63;
+      --text-muted: #6b7280;
+      --shadow: 0 4px 24px rgba(29,47,99,0.10);
+      --shadow-card: 0 2px 16px rgba(29,47,99,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text-dark); }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--primary);
+      box-shadow: 0 2px 16px rgba(29,47,99,0.18);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .nav-brand-logo {
+      width: 40px; height: 40px; border-radius: 50%;
+      object-fit: contain; background: #fff; padding: 2px;
+    }
+    .nav-brand-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      color: #fff; font-size: 18px; letter-spacing: 0.5px;
+    }
+    .nav-brand-name span { color: var(--secondary); }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-links a {
+      color: #cbd5e1; text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px; transition: all .2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.10); }
+    .nav-apply-btn {
+      background: linear-gradient(135deg, var(--secondary), var(--dark-pink)) !important;
+      color: #fff !important; font-weight: 700 !important;
+      padding: 9px 22px !important; border-radius: 50px !important;
+      box-shadow: 0 2px 12px rgba(232,77,122,0.30);
+    }
+    .nav-apply-btn:hover { transform: scale(1.04); background: var(--dark-pink) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 25px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+    #mobile-menu {
+      display: none; flex-direction: column; background: var(--primary);
+      padding: 12px 5% 20px; gap: 4px;
+    }
+    #mobile-menu a {
+      color: #cbd5e1; text-decoration: none; font-size: 15px; padding: 10px 12px;
+      border-radius: 8px; font-weight: 500; transition: .2s;
+    }
+    #mobile-menu a:hover { background: rgba(255,255,255,0.10); color: #fff; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 92vh;
+      background: linear-gradient(135deg, #1D2F63 0%, #2E5DA8 55%, #1D2F63 100%);
+      display: flex; align-items: center; padding: 60px 5%;
+      position: relative; overflow: hidden;
+    }
+    #home::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 650px; }
+    .hero-tag {
+      display: inline-block; background: rgba(232,77,122,0.18);
+      color: var(--secondary); font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 50px; margin-bottom: 20px;
+      border: 1px solid rgba(232,77,122,0.3); letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(30px, 5vw, 56px); color: #fff; line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero-title span { color: var(--secondary); }
+    .hero-sub {
+      color: #a8c4e8; font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.7; margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--secondary), var(--dark-pink));
+      color: #fff; font-weight: 700; font-size: 15px;
+      padding: 14px 32px; border-radius: 50px; border: none;
+      cursor: pointer; text-decoration: none; display: inline-flex;
+      align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(232,77,122,0.40);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,77,122,0.50); }
+    .btn-outline {
+      background: transparent; color: #fff; font-weight: 600; font-size: 15px;
+      padding: 13px 30px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.35);
+      cursor: pointer; text-decoration: none; display: inline-flex;
+      align-items: center; gap: 8px; transition: .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.10); border-color: #fff; }
+    .hero-stats {
+      display: flex; gap: 36px; margin-top: 50px; flex-wrap: wrap;
+    }
+    .hero-stat { color: #fff; }
+    .hero-stat-num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 28px; color: var(--secondary); }
+    .hero-stat-label { font-size: 13px; color: #a8c4e8; }
+    .hero-visual {
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 16px; z-index: 1;
+    }
+    .hero-card-float {
+      background: rgba(255,255,255,0.10); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
+      padding: 16px 22px; color: #fff;
+      animation: floatUp 3s ease-in-out infinite alternate;
+    }
+    .hero-card-float:nth-child(2) { animation-delay: 1s; }
+    @keyframes floatUp { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+    .hero-card-float .icon { font-size: 22px; margin-bottom: 6px; }
+    .hero-card-float .label { font-size: 11px; color: #a8c4e8; }
+    .hero-card-float .value { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 80px 5%; }
+    .section-tag {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--secondary);
+      background: rgba(232,77,122,0.10); padding: 5px 14px; border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(24px, 4vw, 38px); color: var(--primary); margin-bottom: 12px;
+    }
+    .section-sub { color: var(--text-muted); font-size: 16px; max-width: 580px; line-height: 1.7; margin-bottom: 48px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-image-wrap {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-image-wrap img { width: 100%; height: 380px; object-fit: cover; display: block; }
+    .about-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: var(--white); border-radius: 14px; padding: 14px 20px;
+      box-shadow: 0 4px 20px rgba(29,47,99,0.15); display: flex; align-items: center; gap: 12px;
+    }
+    .about-badge-icon { width: 44px; height: 44px; background: var(--secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; }
+    .about-badge-text { font-size: 13px; }
+    .about-badge-text b { font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--primary); }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .about-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-dark); }
+    .about-feature i { color: var(--secondary); font-size: 16px; }
+
+    /* ── COURSES ── */
+    #courses { background: var(--bg); }
+    .courses-top { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 48px; }
+    .course-img { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+    .course-img img { width: 100%; height: 240px; object-fit: cover; display: block; }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
+    .course-card {
+      background: var(--white); border-radius: 16px; padding: 24px 18px;
+      text-align: center; box-shadow: var(--shadow-card);
+      transition: transform .2s, box-shadow .2s; cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--secondary); }
+    .course-card .icon {
+      width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
+    .course-card h3 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .course-card p { font-size: 12px; color: var(--text-muted); }
+    .course-img-bottom { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); margin-top: 40px; }
+    .course-img-bottom img { width: 100%; height: 220px; object-fit: cover; display: block; }
+
+    /* ── SCHOLARSHIP SECTION ── */
+    #scholarships {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      position: relative; overflow: hidden;
+    }
+    #scholarships .section-title { color: #fff; }
+    #scholarships .section-sub { color: #a8c4e8; }
+    .scholarship-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+    .scholarship-card {
+      background: rgba(255,255,255,0.10); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 18px;
+      padding: 28px 22px; color: #fff; transition: .2s;
+    }
+    .scholarship-card:hover { background: rgba(255,255,255,0.16); transform: translateY(-3px); }
+    .scholarship-card .icon { font-size: 32px; margin-bottom: 14px; }
+    .scholarship-card h3 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .scholarship-card p { font-size: 14px; color: #a8c4e8; line-height: 1.6; }
+    .scholarship-cta { text-align: center; margin-top: 48px; }
+
+    /* ── SCHOLARSHIP MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(29,47,99,0.70); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 24px; padding: 40px;
+      max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(29,47,99,0.25); position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 18px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg); border: none; cursor: pointer;
+      font-size: 18px; color: var(--text-muted); display: flex; align-items: center; justify-content: center;
+      transition: .2s;
+    }
+    .modal-close:hover { background: var(--secondary); color: #fff; }
+    .modal-title { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
+    .modal-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--primary); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 12px;
+      font-family: 'Poppins', sans-serif; font-size: 14px; color: var(--text-dark);
+      outline: none; transition: border-color .2s; background: var(--bg);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: #fff; }
+    .form-submit {
+      width: 100%; padding: 16px; margin-top: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700;
+      border: none; border-radius: 50px; cursor: pointer; transition: .2s;
+      box-shadow: 0 4px 20px rgba(29,47,99,0.30);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(29,47,99,0.40); }
+    .success-msg { display: none; text-align: center; padding: 32px 20px; }
+    .success-msg .checkmark { font-size: 64px; margin-bottom: 16px; }
+    .success-msg h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; color: var(--primary); margin-bottom: 8px; }
+    .success-msg p { color: var(--text-muted); }
+
+    /* ── DYNAMIC COLLEGE SECTIONS ── */
+    #featured-colleges { background: var(--white); }
+    
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 10px 24px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .college-thumbnail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .college-thumb-card {
+      background: var(--bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .college-thumb-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    .college-thumb-header {
+      position: relative;
+      height: 130px;
+      background: linear-gradient(135deg, #1D2F63, #2E5DA8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .college-card-logo-img {
+      max-width: 80%;
+      max-height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15));
+      background: rgba(255,255,255,0.95);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .college-thumb-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(232, 77, 122, 0.95);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .college-thumb-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .college-thumb-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+      line-height: 1.4;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .college-thumb-loc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .college-thumb-details {
+      list-style: none;
+      font-size: 12px;
+      color: #4b5563;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .college-thumb-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .college-thumb-details i {
+      color: var(--secondary);
+      font-size: 12px;
+      margin-top: 2px;
+      width: 14px;
+      flex-shrink: 0;
+    }
+    .college-thumb-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .college-thumb-btn:hover {
+      background: var(--secondary);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
+    .contact-info h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 18px; }
+    .contact-items { display: flex; flex-direction: column; gap: 18px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-item-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-item-text h4 { font-weight: 600; font-size: 14px; color: var(--primary); margin-bottom: 3px; }
+    .contact-item-text p { font-size: 13px; color: var(--text-muted); }
+    .whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff; font-weight: 700; font-size: 15px;
+      padding: 13px 28px; border-radius: 50px; text-decoration: none;
+      margin-top: 24px; box-shadow: 0 4px 16px rgba(37,211,102,0.35); transition: .2s;
+    }
+    .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.45); }
+    .contact-form-card { background: var(--white); border-radius: 22px; padding: 36px; box-shadow: var(--shadow-card); }
+    .contact-form-card h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 22px; }
+    .contact-submit {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700;
+      border: none; border-radius: 50px; cursor: pointer; transition: .2s;
+    }
+    .contact-submit:hover { transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary); color: #a8c4e8; padding: 60px 5% 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .nav-brand-name { font-size: 20px; display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+      color: #a8c4e8; font-size: 16px; text-decoration: none; transition: .2s;
+    }
+    .footer-social a:hover { background: var(--secondary); color: #fff; }
+    .footer-col h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: #a8c4e8; text-decoration: none; font-size: 14px; transition: .2s; }
+    .footer-col ul a:hover { color: var(--secondary); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; font-size: 13px; }
+    .footer-bottom a { color: var(--secondary); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .courses-top, .college-grid, .contact-wrapper { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-visual { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .college-contact { grid-template-columns: 1fr; }
+      .college-thumbnail-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 60px 5%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .college-gallery { grid-template-columns: 1fr 1fr; }
+      .modal-box { padding: 24px; }
+    }
+
+    /* Smooth reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a href="#home" class="nav-brand">
+    <img src="college logo/GNIOT.png" alt="Student Help Corner Logo" class="nav-brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="nav-brand-icon" style="display:none;">S</div>
+    <span class="nav-brand-name">Student<span>Help</span>Corner</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#scholarships">Scholarships</a></li>
+    <li><a href="#featured-colleges">Featured Colleges</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#scholarships" class="nav-apply-btn" onclick="openModal()">Apply Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div id="mobile-menu">
+  <a href="#home" onclick="toggleMobile()">Home</a>
+  <a href="#about" onclick="toggleMobile()">About</a>
+  <a href="#courses" onclick="toggleMobile()">Courses</a>
+  <a href="#scholarships" onclick="toggleMobile()">Scholarships</a>
+  <a href="#featured-colleges" onclick="toggleMobile()">Featured Colleges</a>
+  <a href="#contact" onclick="toggleMobile()">Contact</a>
+  <a href="#" onclick="openModal(); toggleMobile();" style="color:#E84D7A;font-weight:700;">Apply Now</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="home">
+  <div class="hero-content reveal">
+    <div class="hero-tag">🎓 India's Trusted Admission Partner</div>
+    <h1 class="hero-title">
+      Get Admission &<br><span>Scholarships</span> with<br>Student Help Corner
+    </h1>
+    <p class="hero-sub">
+      Helping students get admission into top colleges across India with life-changing scholarship opportunities. Your dream college is one step away.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openModal()">
+        <i class="fas fa-graduation-cap"></i> Apply for Scholarship
+      </button>
+      <a href="#courses" class="btn-outline">
+        <i class="fas fa-book-open"></i> Explore Courses
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5000+</div>
+        <div class="hero-stat-label">Students Admitted</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Partner Colleges</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">₹50Cr+</div>
+        <div class="hero-stat-label">Scholarships Awarded</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-float">
+      <div class="icon">🏆</div>
+      <div class="label">Scholarship Awarded</div>
+      <div class="value">₹1,20,000</div>
+    </div>
+    <div class="hero-card-float">
+      <div class="icon">📍</div>
+      <div class="label">New Admission</div>
+      <div class="value">B.Tech CSE – Greater Noida</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80" alt="Students on a university campus lawn" />
+      <div class="about-badge">
+        <div class="about-badge-icon"><i class="fas fa-star"></i></div>
+        <div class="about-badge-text">
+          <b>10+ Years</b>
+          <div style="color:#6b7280;font-size:12px;">Trusted Consultancy</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">Your Guide to the<br>Right College & Career</h2>
+      <p class="section-sub">
+        Student Help Corner is a premier education consultancy based in Greater Noida, dedicated to helping students across India find the best admission opportunities and scholarship support. We bridge the gap between aspiration and achievement.
+      </p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-check-circle"></i> Free Counselling Sessions</div>
+        <div class="about-feature"><i class="fas fa-check-circle"></i> Scholarship Guidance</div>
+        <div class="about-feature"><i class="fas fa-check-circle"></i> 200+ College Network</div>
+        <div class="about-feature"><i class="fas fa-check-circle"></i> Admission Support</div>
+        <div class="about-feature"><i class="fas fa-check-circle"></i> Career Counselling</div>
+        <div class="about-feature"><i class="fas fa-check-circle"></i> Document Assistance</div>
+      </div>
+      <div style="margin-top:32px;">
+        <button class="btn-primary" onclick="openModal()">
+          <i class="fas fa-arrow-right"></i> Get Free Counselling
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COURSES ══ -->
+<section id="courses">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Courses We Help You Get Admitted To</h2>
+    <p class="section-sub" style="margin: 0 auto 48px;">From engineering to law, we guide students across every stream and discipline to find the perfect fit.</p>
+  </div>
+  <div class="courses-top reveal">
+    <div class="course-img">
+      <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=900&q=80" alt="Students in a high-tech modern university library setup" />
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:14px;">
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--primary);">Explore Your Future Career Path</h3>
+      <p style="color:var(--text-muted);font-size:15px;line-height:1.7;">We help you navigate admissions across all major streams — Engineering, Management, Medical, Design, and more.</p>
+      <button class="btn-primary" style="align-self:flex-start;" onclick="openModal()"><i class="fas fa-graduation-cap"></i> Get Admission Help</button>
+    </div>
+  </div>
+  <div class="courses-grid reveal">
+    <div class="course-card">
+      <div class="icon" style="background:#EEF4FF;"><span style="font-size:26px;">⚙️</span></div>
+      <h3>B.Tech</h3>
+      <p>4-year engineering programme</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#FFF0F5;"><span style="font-size:26px;">🔬</span></div>
+      <h3>M.Tech</h3>
+      <p>Advanced engineering studies</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#FFF8EE;"><span style="font-size:26px;">💼</span></div>
+      <h3>MBA</h3>
+      <p>Business administration</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#F0FFF4;"><span style="font-size:26px;">📊</span></div>
+      <h3>BBA</h3>
+      <p>Bachelor of Business Admin</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#F5F0FF;"><span style="font-size:26px;">💻</span></div>
+      <h3>BCA</h3>
+      <p>Computer applications</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#EEF4FF;"><span style="font-size:26px;">🖥️</span></div>
+      <h3>MCA</h3>
+      <p>Masters in computer apps</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#FFF8EE;"><span style="font-size:26px;">🔧</span></div>
+      <h3>Polytechnic</h3>
+      <p>Technical diploma courses</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#F0FFF4;"><span style="font-size:26px;">📜</span></div>
+      <h3>Diploma</h3>
+      <p>Short-term skill courses</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#FFF0F5;"><span style="font-size:26px;">🏥</span></div>
+      <h3>Nursing</h3>
+      <p>Healthcare & patient care</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#F5F0FF;"><span style="font-size:26px;">💊</span></div>
+      <h3>Pharmacy</h3>
+      <p>Pharmaceutical science</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#EEF4FF;"><span style="font-size:26px;">⚖️</span></div>
+      <h3>Law</h3>
+      <p>LLB & legal programmes</p>
+    </div>
+    <div class="course-card">
+      <div class="icon" style="background:#FFF0F5;"><span style="font-size:26px;">🎓</span></div>
+      <h3>Other Courses</h3>
+      <p>Ask us about any course</p>
+    </div>
+  </div>
+  <div class="course-img-bottom reveal">
+    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400&q=80" alt="Graduating university students celebrating" />
+  </div>
+</section>
+
+<!-- ══ SCHOLARSHIPS ══ -->
+<section id="scholarships">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-tag" style="background:rgba(232,77,122,0.20);color:#F48FB1;">Scholarships</div>
+    <h2 class="section-title">Unlock Scholarship Opportunities</h2>
+    <p class="section-sub" style="margin:0 auto 48px;color:#a8c4e8;">We connect deserving students with scholarships worth lakhs. Apply today and reduce your education costs significantly.</p>
+  </div>
+  <div class="scholarship-cards reveal">
+    <div class="scholarship-card">
+      <div class="icon">🏅</div>
+      <h3>Merit Scholarship</h3>
+      <p>Up to 100% fee waiver for students with 80%+ in 12th. Based on academic excellence.</p>
+    </div>
+    <div class="scholarship-card">
+      <div class="icon">💰</div>
+      <h3>Need-Based Scholarship</h3>
+      <p>Financial assistance for economically weaker section students. Easy documentation process.</p>
+    </div>
+    <div class="scholarship-card">
+      <div class="icon">👧</div>
+      <h3>Girls Scholarship</h3>
+      <p>Special scholarships for female students across all courses to promote women education.</p>
+    </div>
+    <div class="scholarship-card">
+      <div class="icon">🌍</div>
+      <h3>State Government Schemes</h3>
+      <p>We assist in applying for state and central government scholarship schemes like NSP.</p>
+    </div>
+  </div>
+  <div class="scholarship-cta reveal">
+    <button class="btn-primary" style="font-size:17px;padding:16px 42px;" onclick="openModal()">
+      <i class="fas fa-graduation-cap"></i> Apply for Scholarship Now
+    </button>
+  </div>
+</section>
+
+<!-- ══ ALL PARTNER COLLEGES GRID (MAPPED DYNAMICALLY) ══ -->
+<section id="featured-colleges">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-tag">Partner Directory</div>
+    <h2 class="section-title">Explore All Associated Institutions</h2>
+    <p class="section-sub" style="margin:0 auto 24px;">Direct institutional admissions and scholarship processing across all matching networks in Delhi NCR.</p>
+    
+    <!-- Filter Controls -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterColleges('all')">All Programs</button>
+      <button class="filter-btn" onclick="filterColleges('engineering')">Engineering / Tech</button>
+      <button class="filter-btn" onclick="filterColleges('management')">Management / Commerce</button>
+      <button class="filter-btn" onclick="filterColleges('other')">Pharmacy / Law / Medical</button>
+    </div>
+  </div>
+  
+  <div class="college-thumbnail-grid reveal" id="collegeContainer">
+    <!-- Populated Dynamically via JavaScript to handle all 31 files cleanly -->
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="reveal">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub" style="margin-bottom:32px;">Have questions about admissions or scholarships? Our counsellors are ready to help you.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-detail-icon" style="background:rgba(232,77,122,0.10);color:var(--secondary);"><i class="fas fa-phone"></i></div>
+          <div class="contact-item-text">
+            <h4>Phone Number</h4>
+            <p>+91 8368239773</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-detail-icon" style="background:rgba(46,93,168,0.10);color:var(--accent);"><i class="fab fa-instagram"></i></div>
+          <div class="contact-item-text">
+            <h4>Instagram</h4>
+            <p>@studenthelpcorner__</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-detail-icon" style="background:rgba(88,168,90,0.10);color:var(--green);"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-item-text">
+            <h4>Office Address</h4>
+            <p>Shop No. 29, 2nd Floor, Satyam Complex-2, Alpha-2, Greater Noida, Uttar Pradesh, India</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-detail-icon" style="background:rgba(243,154,62,0.10);color:var(--orange);"><i class="fas fa-clock"></i></div>
+          <div class="contact-item-text">
+            <h4>Working Hours</h4>
+            <p>Mon – Sat: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 4:00 PM</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/918368239773?text=Hello%20Student%20Help%20Corner%2C%20I%20need%20admission%20guidance" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp" style="font-size:20px;"></i> Chat on WhatsApp
+      </a>
+    </div>
+    <div class="contact-form-card reveal">
+      <h3>Send Us a Message</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="c-name" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" id="c-mobile" placeholder="+91 00000 00000" />
+        </div>
+        <div class="form-group full">
+          <label>Email Address</label>
+          <input type="email" id="c-email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group full">
+          <label>Message</label>
+          <textarea id="c-message" rows="4" placeholder="Tell us about your queries, course interest, or anything we can help with..."></textarea>
+        </div>
+      </div>
+      <button class="contact-submit" onclick="submitContact()" style="margin-top:16px;">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+      <div id="contact-success" style="display:none;margin-top:16px;padding:14px;background:#F0FFF4;border-radius:12px;color:#2d6a2d;text-align:center;font-weight:600;">
+        ✅ Message sent! We'll get back to you soon.
+      </div>
+    </div>
+  </div>
+  <div class="map-embed" style="margin-top:48px;border-radius:20px;">
+    <iframe src="https://maps.google.com/maps?q=Satyam%20Complex-2,%20Alpha-2,%20Greater%20Noida&t=&z=13&ie=UTF8&iwloc=&output=embed" style="height:300px;" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-brand-name">Student<span style="color:var(--secondary);">Help</span>Corner</span>
+      <p>India's trusted education consultancy helping students secure admissions and scholarships at top colleges. Based in Greater Noida, serving students across India.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/studenthelpcorner__" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/918368239773" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#scholarships">Scholarships</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#">B.Tech / M.Tech</a></li>
+        <li><a href="#">MBA / BBA</a></li>
+        <li><a href="#">BCA / MCA</a></li>
+        <li><a href="#">Polytechnic</a></li>
+        <li><a href="#">Nursing / Pharmacy</a></li>
+        <li><a href="#">Law</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Disclaimer</a></li>
+      </ul>
+      <div style="margin-top:20px;">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+918368239773">+91 8368239773</a></li>
+          <li><a href="https://wa.me/918368239773" target="_blank">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Student Help Corner. All rights reserved.</div>
+    <div>Made with ❤️ for Indian Students</div>
+  </div>
+</footer>
+
+<!-- ══ SCHOLARSHIP MODAL ══ -->
+<div class="modal-overlay" id="scholarshipModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+
+    <div id="modal-form-section">
+      <div class="modal-title">📋 Scholarship Application Form</div>
+      <div class="modal-sub">Fill in the details below and our counsellor will contact you shortly.</div>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Full Name *</label>
+          <input type="text" id="s-name" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number *</label>
+          <input type="tel" id="s-mobile" placeholder="+91 00000 00000" />
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="s-email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group">
+          <label>10th Percentage *</label>
+          <input type="number" id="s-tenth" placeholder="e.g. 85.5" min="0" max="100" />
+        </div>
+        <div class="form-group">
+          <label>12th Percentage *</label>
+          <input type="number" id="s-twelfth" placeholder="e.g. 78.0" min="0" max="100" />
+        </div>
+        <div class="form-group">
+          <label>State *</label>
+          <select id="s-state">
+            <option value="">Select your state</option>
+            <option>Uttar Pradesh</option>
+            <option>Delhi</option>
+            <option>Haryana</option>
+            <option>Rajasthan</option>
+            <option>Bihar</option>
+            <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Gujarat</option>
+            <option>Punjab</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>City *</label>
+          <input type="text" id="s-city" placeholder="Your city name" />
+        </div>
+        <div class="form-group">
+          <label>Course Interested In *</label>
+          <select id="s-course">
+            <option value="">Select a course</option>
+            <option>B.Tech</option>
+            <option>M.Tech</option>
+            <option>MBA</option>
+            <option>BBA</option>
+            <option>BCA</option>
+            <option>MCA</option>
+            <option>Polytechnic</option>
+            <option>Diploma</option>
+            <option>Nursing</option>
+            <option>Pharmacy</option>
+            <option>Law</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>College Name (Optional)</label>
+          <input type="text" id="s-college" placeholder="Any preferred college? (optional)" />
+        </div>
+      </div>
+
+      <button class="form-submit" onclick="submitScholarship()">
+        <i class="fas fa-paper-plane"></i> Submit Application
+      </button>
+    </div>
+
+    <div class="success-msg" id="modal-success">
+      <div class="checkmark">🎉</div>
+      <h3>Application Submitted!</h3>
+      <p style="font-size:16px;color:var(--primary);font-weight:600;margin-bottom:8px;">Thank you! Our counsellor will contact you shortly.</p>
+      <p>We typically respond within 24 hours. You can also reach us directly at <strong>+91 8368239773</strong>.</p>
+      <button class="btn-primary" style="margin-top:24px;" onclick="closeModal()"><i class="fas fa-check"></i> Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── 31 COLLEGE DATASOURCE - MATCHED TO YOUR TERMINAL FILENAMES ──
+  const collegesData = [
+    { name: "Accurate Institute of Management & Technology", logo: "Accurate.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, MBA, MCA, Poly", "Highest Pack: 85 LPA", "AICTE Approved, AKTU Affiliated"] },
+    { name: "Jaipuria Institute of Management", logo: "Jaipuria.png", loc: "Sector 62, Noida", type: "management", info: ["Flagship PGDM, MBA Programs", "Top 50 Private B-Schools", "NAAC Grade 'A' Accredited"] },
+    { name: "Delhi Technical Campus (DTC)", logo: "delhitechnical.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech CSE, B.Arch, MBA", "Affiliated to GGSIPU, New Delhi", "Premium Infrastructure Hub"] },
+    { name: "IEC Group of Institutions", logo: "iec.png", loc: "Knowledge Park I, Greater Noida", type: "engineering", info: ["B.Tech, B.Pharm, MBA, MCA", "Established 1999 Network", "AKTU Counselling Partner"] },
+    { name: "Sharda University", logo: "sharda.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, Law, Medical, Management", "NAAC A+ Multidisciplinary Campus", "100% Scholarship System"] },
+    { name: "Bennett University (Times Group)", logo: "Bennet.png", loc: "TechZone II, Greater Noida", type: "engineering", info: ["B.Tech, Law, Media, BBA", "Ivy League Style Curriculum", "Premium Placements Direct Core"] },
+    { name: "Mangalmay Institute of Management & Tech", logo: "Mangalmay.png", loc: "Knowledge Park II, Greater Noida", type: "management", info: ["MBA, BBA, BCA, B.Ed", "Excellent Local Placement Ties", "Approved by AICTE"] },
+    { name: "Farayan Institute / Network", logo: "farai.png", loc: "Greater Noida, Delhi NCR", type: "other", info: ["Skill and Technical Diplomas", "Direct Entry & Seat Allocation", "Industry Focused Labs"] },
+    { name: "Ishan Group of Educational Institutions", logo: "ishan.png", loc: "Knowledge Park I, Greater Noida", type: "other", info: ["Ayurvedic (BAMS), Law, Pharmacy", "NAAC Accredited Campus Base", "BCI & PCI Approved Formats"] },
+    { name: "Sita Ram Group of Institutions", logo: "sitasrm.png", loc: "Delhi NCR Region", type: "other", info: ["Professional and Allied Degrees", "Scholarship Seats Processing", "State University Affiliations"] },
+    { name: "Greater Noida Institute (GN Group)", logo: "GN.png", loc: "Knowledge Park II, Greater Noida", type: "engineering", info: ["B.Tech, LLB, BBA, BCA", "Affiliated to AKTU & CCSU", "Focused Technical Placement"] },
+    { name: "Manglayatan University Campus", logo: "Manglayatan .png", loc: "Delhi-NCR Extension", type: "other", info: ["B.Tech, Poly, Pharmacy, Biotech", "UGC Approved Private University", "Vibrant Academic Framework"] },
+    { name: "GL Bajaj Institute of Technology & Mgmt", logo: "gjbajaj.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech CSE, MBA, MCA", "Top Placement Records consistently", "High Ranking AKTU Platform"] },
+    { name: "ITS Engineering College", logo: "its.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, MBA Streams", "In-House Startup Incubators", "Excellent Corporate Exposure"] },
+    { name: "Sparsh Group of Institutions", logo: "sparsh.png", loc: "Greater Noida Area", type: "management", info: ["PGDM, Executive Management", "Industry Linkage Focus", "Direct Consultancy Allocations"] },
+    { name: "GNIOT Group of Institutions", logo: "GNIOT.png", loc: "Knowledge Park II, Greater Noida", type: "engineering", info: ["B.Tech, MCA, MBA, Commerce", "Massive Modern Campus Base", "High Placement Conversion Track"] },
+    { name: "NIET (Autonomous Campus)", logo: "NIET.png", loc: "Knowledge Park II, Greater Noida", type: "engineering", info: ["B.Tech, M.Tech, B.Pharm, MCA", "First Autonomous Institute in GN", "Top Tier Cloud Learning Labs"] },
+    { name: "HIET Group of Institutions", logo: "hiet.png", loc: "Ghaziabad, NCR", type: "engineering", info: ["B.Tech, Polytechnic Diplomas", "Value-Driven Academic Track", "AKTU/BTE UP Approved"] },
+    { name: "Kailash Institute of Nursing & Pharmacy", logo: "kailash.png", loc: "Knowledge Park III, Greater Noida", type: "other", info: ["B.Sc Nursing, D.Pharm, Healthcare", "Attached to Premium Kailash Hospital", "100% Practical Training Placements"] },
+    { name: "Sunder Deep Group of Institutions", logo: "sunder.png", loc: "Ghaziabad, NCR", type: "engineering", info: ["B.Tech, B.Arch, B.Pharm, BBA", "Sprawling Multidisciplinary Campus", "AKTU Counseling Assistance Available"] },
+    { name: "Hierank Business School", logo: "Hierank.png", loc: "Sector 62, Noida", type: "management", info: ["MBA, BBA, BCA Programs", "CCSU & AKTU Affiliations", "Sector 62 Metro Connected Campus"] },
+    { name: "NIMT Group of Institutions", logo: "NIMT.png", loc: "Knowledge Park I, Greater Noida", type: "management", info: ["MBA, PGDM, Law, Teacher Training", "Legacy Business School Module", "Affordable ROI Management Structure"] },
+    { name: "HIMT Group (Harlal Institute)", logo: "himt.png", loc: "Knowledge Park I, Greater Noida", type: "management", info: ["BCA, BBA, MBA, MCA, Biotech", "Established 1998 Legacy", "AICTE & NCTE Approved Track"] },
+    { name: "KCC Institutes", logo: "kcc.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, BBA, BCA, BJMC", "Massive Infrastructure & Hostels", "AKTU & CCSU Affiliated Hub"] },
+    { name: "United Group of Institutions (UGI)", logo: "unitedgroup.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, M.Tech, MBA, Pharmacy", "Brilliant Institutional Pedigree", "Top Placement Alliances Built In"] },
+    { name: "IILM University Network", logo: "IILM.png", loc: "Knowledge Park II, Greater Noida", type: "management", info: ["B.Tech CSE, MBA, Liberal Arts", "Elite Core Infrastructure Layout", "Strategic Industry Fellowships"] },
+    { name: "Venkateshwara Inst of Eng & Tech (VSIET)", logo: "VSIET.png", loc: "Meerut-NCR Road", type: "engineering", info: ["B.Tech, Poly Engineering Profiles", "State Infrastructure Grant Matrix", "Direct Counsel Allotments"] },
+    { name: "HRIT University Network", logo: "hrit.png", loc: "Ghaziabad, NCR", type: "engineering", info: ["B.Tech, B.Pharm, MBA, Nursing", "22 Acres NAAC A+ Institutional Base", "Comprehensive Tech and Science Streams"] },
+    { name: "Lloyd Groups (Law/Pharmacy/Management)", logo: "lyod.png", loc: "Knowledge Park II, Greater Noida", type: "other", info: ["BA LLB, B.Pharm, MBA, BBA", "Top Ranked Law & Pharmacy Infrastructure", "Direct Corporate Hiring Ties"] },
+    { name: "IIMT College of Engineering", logo: "IIMT.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, MBA, MCA, Poly, Law", "NBA Accredited, NAAC A Grade Core", "Max Package Records up to 36.5 LPA"] },
+    { name: "ACCMAN Institute of Management", logo: "accman.png", loc: "Knowledge Park II, Greater Noida", type: "management", info: ["PGDM Analytics, BBA, B.Com", "AKTU Affiliated Business Incubator", "High Corporate Exposure Internships"] },
+    { name: "International Business Academy (IBI)", logo: "ibi.png", loc: "Knowledge Park II, Greater Noida", type: "management", info: ["Flagship PGDM, Corporate Corporate Modules", "Premium Finance & Tech Specializations", "Corporate HR Interface Hubs"] },
+    { name: "Metro College of Health Sciences", logo: "metro.png", loc: "Knowledge Park III, Greater Noida", type: "other", info: ["Nursing, Pharmacy, Paramedical St.", "Backed by Metro Group of Hospitals", "Direct On-Site Clinical Rotations"] }
+  ];
+
+  // ── DYNAMIC GENERATION & FILTER SYSTEM ──
+  function renderColleges(data) {
+    const container = document.getElementById('collegeContainer');
+    container.innerHTML = '';
+    
+    if(data.length === 0) {
+      container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted); font-weight:600;">No institutional matches found. Contact guidance system for details.</div>`;
+      return;
+    }
+
+    data.forEach(clg => {
+      const card = document.createElement('div');
+      card.className = 'college-thumb-card';
+      card.setAttribute('data-type', clg.type);
+      
+      let badgeTag = clg.type === 'engineering' ? 'Tech Pack' : (clg.type === 'management' ? 'Corporate' : 'Flagship Program');
+
+      card.innerHTML = `
+        <div class="college-thumb-header">
+          <div class="college-thumb-tag">${badgeTag}</div>
+          <img class="college-card-logo-img" src="college logo/${clg.logo}" alt="${clg.name} Logo" onerror="this.src='https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&q=80'">
+        </div>
+        <div class="college-thumb-content">
+          <div class="college-thumb-title">${clg.name}</div>
+          <div class="college-thumb-loc"><i class="fas fa-map-marker-alt"></i> ${clg.loc}</div>
+          <ul class="college-thumb-details">
+            <li><i class="fas fa-graduation-cap"></i> ${clg.info[0]}</li>
+            <li><i class="fas fa-certificate"></i> ${clg.info[1]}</li>
+            <li><i class="fas fa-check-double"></i> ${clg.info[2]}</li>
+          </ul>
+          <button class="college-thumb-btn" onclick="openModal()">Process Scholarship Seat</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function filterColleges(category) {
+    // Update active tab styling
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if(category === 'all') {
+      renderColleges(collegesData);
+    } else {
+      const filtered = collegesData.filter(c => c.type === category);
+      renderColleges(filtered);
+    }
+  }
+
+  // Initial load
+  document.addEventListener("DOMContentLoaded", () => {
+    renderColleges(collegesData);
+  });
+
+  // ── Mobile Menu ──
+  function toggleMobile() {
+    const menu = document.getElementById('mobile-menu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  // ── Modal ──
+  function openModal() {
+    document.getElementById('scholarshipModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('modal-form-section').style.display = 'block';
+    document.getElementById('modal-success').style.display = 'none';
+  }
+  function closeModal() {
+    document.getElementById('scholarshipModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('scholarshipModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── Scholarship Form Submit ──
+  function submitScholarship() {
+    const name = document.getElementById('s-name').value.trim();
+    const mobile = document.getElementById('s-mobile').value.trim();
+    const email = document.getElementById('s-email').value.trim();
+    const tenth = document.getElementById('s-tenth').value.trim();
+    const twelfth = document.getElementById('s-twelfth').value.trim();
+    const state = document.getElementById('s-state').value;
+    const city = document.getElementById('s-city').value.trim();
+    const course = document.getElementById('s-course').value;
+
+    if (!name || !mobile || !email || !tenth || !twelfth || !state || !city || !course) {
+      alert('Please fill in all required fields (*).');
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+      alert('Please enter a valid 10-digit Indian mobile number.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    document.getElementById('modal-form-section').style.display = 'none';
+    document.getElementById('modal-success').style.display = 'block';
+  }
+
+  // ── Contact Form Submit ──
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const mobile = document.getElementById('c-mobile').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const msg = document.getElementById('c-message').value.trim();
+
+    if (!name || !mobile || !email || !msg) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    document.getElementById('contact-success').style.display = 'block';
+    document.getElementById('c-name').value = '';
+    document.getElementById('c-mobile').value = '';
+    document.getElementById('c-email').value = '';
+    document.getElementById('c-message').value = '';
+  }
+
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
