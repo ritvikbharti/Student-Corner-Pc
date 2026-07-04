@@ -42,7 +42,7 @@
     }
     .nav-brand-logo {
       width: 40px; height: 40px; border-radius: 50%;
-      object-fit: contain; background: #fff; padding: 2px;
+      object-fit:cover; background: #fff; padding: 2px;
     }
     .nav-brand-name {
       font-family: 'Montserrat', sans-serif; font-weight: 800;
@@ -340,6 +340,10 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
+    .college-thumb-tag.top-partner {
+      background: linear-gradient(135deg, #f59e0b, #d97706); /* Premium amber/gold gradient */
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+    }
     .college-thumb-content {
       padding: 20px;
       display: flex;
@@ -480,7 +484,7 @@
 <!-- ══ NAVBAR ══ -->
 <nav id="navbar">
   <a href="#home" class="nav-brand">
-    <img src="college logo/GNIOT.png" alt="Student Help Corner Logo" class="nav-brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <img src="college logo/main_logo.jpeg" alt="Student Help Corner Logo" class="nav-brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <div class="nav-brand-icon" style="display:none;">S</div>
     <span class="nav-brand-name">Student<span>Help</span>Corner</span>
   </a>
@@ -535,7 +539,7 @@
         <div class="hero-stat-label">Partner Colleges</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">₹50Cr+</div>
+        <div class="hero-stat-num">₹1Cr+</div>
         <div class="hero-stat-label">Scholarships Awarded</div>
       </div>
     </div>
@@ -544,7 +548,7 @@
     <div class="hero-card-float">
       <div class="icon">🏆</div>
       <div class="label">Scholarship Awarded</div>
-      <div class="value">₹1,20,000</div>
+      <div class="value">₹80,000</div>
     </div>
     <div class="hero-card-float">
       <div class="icon">📍</div>
@@ -668,9 +672,6 @@
       <h3>Other Courses</h3>
       <p>Ask us about any course</p>
     </div>
-  </div>
-  <div class="course-img-bottom reveal">
-    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400&q=80" alt="Graduating university students celebrating" />
   </div>
 </section>
 
@@ -998,16 +999,29 @@
       return;
     }
 
-    data.forEach(clg => {
+    // Ensure "IIMT College of Engineering" is always on top (if present in the current filter list)
+    const sortedData = [...data];
+    const iimtIndex = sortedData.findIndex(clg => clg.name === "IIMT College of Engineering");
+    if (iimtIndex > -1) {
+      const [iimt] = sortedData.splice(iimtIndex, 1);
+      sortedData.unshift(iimt);
+    }
+
+    sortedData.forEach(clg => {
       const card = document.createElement('div');
       card.className = 'college-thumb-card';
       card.setAttribute('data-type', clg.type);
       
       let badgeTag = clg.type === 'engineering' ? 'Tech Pack' : (clg.type === 'management' ? 'Corporate' : 'Flagship Program');
+      let tagClass = 'college-thumb-tag';
+      if (clg.name === "IIMT College of Engineering") {
+        badgeTag = "Top Partner";
+        tagClass += " top-partner";
+      }
 
       card.innerHTML = `
         <div class="college-thumb-header">
-          <div class="college-thumb-tag">${badgeTag}</div>
+          <div class="${tagClass}">${badgeTag}</div>
           <img class="college-card-logo-img" src="college logo/${clg.logo}" alt="${clg.name} Logo" onerror="this.src='https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&q=80'">
         </div>
         <div class="college-thumb-content">
@@ -1089,6 +1103,11 @@
       return;
     }
 
+    const payload = { form:"Scholarship", name, mobile, email, tenth, twelfth, state, city, course,
+      college: document.getElementById('s-college').value.trim() };
+    fetch('https://script.google.com/macros/s/AKfycbwCn2cnDfzmrk1S51TtkB8qmzzOLC88YVXxzB9C9G4oKw_OzfMzaFapcEWfulJJ5bXO/exec', {
+      method: 'POST', body: JSON.stringify(payload)
+    }).catch(() => {});
     document.getElementById('modal-form-section').style.display = 'none';
     document.getElementById('modal-success').style.display = 'block';
   }
@@ -1104,6 +1123,10 @@
       alert('Please fill in all fields.');
       return;
     }
+    const payload = { form:"Contact", name, mobile, email, message: msg };
+    fetch('https://script.google.com/macros/s/AKfycbwCn2cnDfzmrk1S51TtkB8qmzzOLC88YVXxzB9C9G4oKw_OzfMzaFapcEWfulJJ5bXO/exec', {
+      method: 'POST', body: JSON.stringify(payload)
+    }).catch(() => {});
     document.getElementById('contact-success').style.display = 'block';
     document.getElementById('c-name').value = '';
     document.getElementById('c-mobile').value = '';
@@ -1114,7 +1137,7 @@
   // ── Scroll Reveal ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.02 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
