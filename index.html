@@ -1105,7 +1105,7 @@
 
     const payload = { form:"Scholarship", name, mobile, email, tenth, twelfth, state, city, course,
       college: document.getElementById('s-college').value.trim() };
-    fetch('https://script.google.com/macros/s/AKfycbx6nLUsid-oDlPTUCfQM12C8OsBZJyWeA1NgSIj7QcGI2JzXy1RIDQBcgt-E0s15GXZqA/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwCn2cnDfzmrk1S51TtkB8qmzzOLC88YVXxzB9C9G4oKw_OzfMzaFapcEWfulJJ5bXO/exec', {
       method: 'POST', body: JSON.stringify(payload)
     }).catch(() => {});
     document.getElementById('modal-form-section').style.display = 'none';
