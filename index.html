@@ -1124,7 +1124,7 @@
       return;
     }
     const payload = { form:"Contact", name, mobile, email, message: msg };
-    fetch('https://script.google.com/macros/s/AKfycbx6nLUsid-oDlPTUCfQM12C8OsBZJyWeA1NgSIj7QcGI2JzXy1RIDQBcgt-E0s15GXZqA/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwCn2cnDfzmrk1S51TtkB8qmzzOLC88YVXxzB9C9G4oKw_OzfMzaFapcEWfulJJ5bXO/exec', {
       method: 'POST', body: JSON.stringify(payload)
     }).catch(() => {});
     document.getElementById('contact-success').style.display = 'block';
