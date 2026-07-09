@@ -411,7 +411,7 @@
     .contact-info h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 18px; }
     .contact-items { display: flex; flex-direction: column; gap: 18px; }
     .contact-item { display: flex; align-items: flex-start; gap: 14px; }
-    .contact-item-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-detail-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .contact-item-text h4 { font-weight: 600; font-size: 14px; color: var(--primary); margin-bottom: 3px; }
     .contact-item-text p { font-size: 13px; color: var(--text-muted); }
     .whatsapp-btn {
@@ -449,16 +449,15 @@
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul a { color: #a8c4e8; text-decoration: none; font-size: 14px; transition: .2s; }
     .footer-col ul a:hover { color: var(--secondary); padding-left: 4px; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 13px; gap: 16px; }
     .footer-bottom a { color: var(--secondary); text-decoration: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .about-grid, .courses-top, .college-grid, .contact-wrapper { grid-template-columns: 1fr; }
+      .about-grid, .courses-top, .contact-wrapper { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .hero-visual { display: none; }
       .form-grid { grid-template-columns: 1fr; }
-      .college-contact { grid-template-columns: 1fr; }
       .college-thumbnail-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
     }
     @media (max-width: 640px) {
@@ -466,7 +465,6 @@
       .hamburger { display: flex; }
       section { padding: 60px 5%; }
       .footer-grid { grid-template-columns: 1fr; }
-      .college-gallery { grid-template-columns: 1fr 1fr; }
       .modal-box { padding: 24px; }
     }
 
@@ -477,7 +475,6 @@
 </head>
 <body>
 
-<!-- ══ NAVBAR ══ -->
 <nav id="navbar">
   <a href="#home" class="nav-brand">
     <img src="college logo/GNIOT.png" alt="Student Help Corner Logo" class="nav-brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -507,7 +504,6 @@
   <a href="#" onclick="openModal(); toggleMobile();" style="color:#E84D7A;font-weight:700;">Apply Now</a>
 </div>
 
-<!-- ══ HERO ══ -->
 <section id="home">
   <div class="hero-content reveal">
     <div class="hero-tag">🎓 India's Trusted Admission Partner</div>
@@ -554,7 +550,6 @@
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="about-grid">
     <div class="about-image-wrap reveal">
@@ -590,7 +585,6 @@
   </div>
 </section>
 
-<!-- ══ COURSES ══ -->
 <section id="courses">
   <div style="text-align:center;" class="reveal">
     <div class="section-tag">What We Offer</div>
@@ -674,7 +668,6 @@
   </div>
 </section>
 
-<!-- ══ SCHOLARSHIPS ══ -->
 <section id="scholarships">
   <div style="text-align:center;" class="reveal">
     <div class="section-tag" style="background:rgba(232,77,122,0.20);color:#F48FB1;">Scholarships</div>
@@ -710,28 +703,24 @@
   </div>
 </section>
 
-<!-- ══ ALL PARTNER COLLEGES GRID (MAPPED DYNAMICALLY) ══ -->
 <section id="featured-colleges">
   <div style="text-align:center;" class="reveal">
     <div class="section-tag">Partner Directory</div>
     <h2 class="section-title">Explore All Associated Institutions</h2>
-    <p class="section-sub" style="margin:0 auto 24px;">Direct institutional admissions and scholarship processing across all matching networks in Delhi NCR.</p>
+    <p class="section-sub" style="margin:0 auto 24px;">Direct institutional admissions and scholarship processing across all matching networks in India.</p>
     
-    <!-- Filter Controls -->
     <div class="filter-tabs">
       <button class="filter-btn active" onclick="filterColleges('all')">All Programs</button>
       <button class="filter-btn" onclick="filterColleges('engineering')">Engineering / Tech</button>
       <button class="filter-btn" onclick="filterColleges('management')">Management / Commerce</button>
-      <button class="filter-btn" onclick="filterColleges('other')">Pharmacy / Law / Medical</button>
+      <button class="filter-btn" onclick="filterColleges('other')">Pharmacy / Law / University</button>
     </div>
   </div>
   
   <div class="college-thumbnail-grid reveal" id="collegeContainer">
-    <!-- Populated Dynamically via JavaScript to handle all 31 files cleanly -->
-  </div>
+    </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="contact-wrapper">
     <div class="reveal">
@@ -800,12 +789,11 @@
       </div>
     </div>
   </div>
-  <div class="map-embed" style="margin-top:48px;border-radius:20px;">
-    <iframe src="https://maps.google.com/maps?q=Satyam%20Complex-2,%20Alpha-2,%20Greater%20Noida&t=&z=13&ie=UTF8&iwloc=&output=embed" style="height:300px;" loading="lazy"></iframe>
+  <div class="map-embed" style="margin-top:48px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-card);">
+    <iframe src="https://maps.google.com/maps?q=Satyam%20Complex-2,%20Alpha-2,%20Greater%20Noida&t=&z=13&ie=UTF8&iwloc=&output=embed" style="height:300px;width:100%;border:0;" loading="lazy"></iframe>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -861,7 +849,6 @@
   </div>
 </footer>
 
-<!-- ══ SCHOLARSHIP MODAL ══ -->
 <div class="modal-overlay" id="scholarshipModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -951,13 +938,31 @@
 </div>
 
 <script>
-  // ── 31 COLLEGE DATASOURCE - MATCHED TO YOUR TERMINAL FILENAMES ──
+  // ── 46 COLLEGE DATASOURCE - UPDATED INTEGRATING LOGOS FROM IMAGE ──
   const collegesData = [
+    // --- Colleges from Uploaded Image ---
+    { name: "HI-TECH Institute of Engineering & Technology", logo: "hi-tech.png", loc: "Ghaziabad, Uttar Pradesh", type: "engineering", info: ["B.Tech, Polytechnic, MCA, MBA", "Top Emerging Infrastructure Award", "AKTU Affiliated, State-of-the-art Labs"] },
+    { name: "IITM Group of Institutions", logo: "iitm_sonipat.png", loc: "Sonipat, Haryana", type: "engineering", info: ["B.Tech, BCA, BBA, Diploma", "Excellent Placement Record", "State University Affiliated Core"] },
+    { name: "Rathinam Institute of Technology", logo: "rathinam_tech.png", loc: "Bangalore, Karnataka", type: "engineering", info: ["B.Tech Engineering Specializations", "Premium Modern Digital Campuses", "AICTE Approved Corporate Tracks"] },
+    { name: "ITM Institute of Technology & Management", logo: "itm_dehradun.png", loc: "Dehradun, Uttarakhand", type: "management", info: ["MBA, PGDM, Corporate Formats", "Approved by AICTE, New Delhi", "Scenic and Elite Academic Center"] },
+    { name: "Bima Sunstone Institute of Technology", logo: "bima_sunstone.png", loc: "Bangalore, Karnataka", type: "engineering", info: ["B.Tech, Specialized Tech Tracks", "Pay After Placement/Scholarship Plans", "Industry Immersed Global Framework"] },
+    { name: "NGF College of Engineering & Technology", logo: "ngf.png", loc: "Faridabad, Haryana", type: "engineering", info: ["B.Tech, MBA, Polytechnic Diplomas", "Sprawling High-Tech Tech Infrastructure", "MDU Affiliated Counselling Allotment"] },
+    { name: "Rathinam College of Arts & Science", logo: "rathinam_arts.png", loc: "Coimbatore, Tamil Nadu", type: "other", info: ["B.Sc, B.Com, BCA, Arts Programs", "NAAC Grade 'A++' Rated Framework", "Ranked among Top Institutions India"] },
+    { name: "Rayat-Bahra University", logo: "rayat_bahra.png", loc: "Mohali, Punjab", type: "other", info: ["Engineering, Management, Pharmacy, Law", "UGC Approved Dynamic Private University", "Vibrant Academic Internships Portfolio"] },
+    { name: "SAGE University Indore", logo: "sage_indore.png", loc: "Indore, Madhya Pradesh", type: "other", info: ["B.Tech, Management, Allied Sciences", "Premium Infrastructure & High Tech Labs", "UGC Approved Private Hub Star Placement"] },
+    { name: "Assam Down Town University", logo: "assam_down_town.png", loc: "Guwahati, Assam", type: "other", info: ["Nursing, Pharmacy, Engineering, MBA", "Encouraging Success Ecosystem", "Largest Educational Group of Northeast"] },
+    { name: "SAGE University Bhopal", logo: "sage_bhopal.png", loc: "Bhopal, Madhya Pradesh", type: "other", info: ["B.Tech, MBA, Design, Applied Sciences", "Advanced Advanced Cloud Learning setups", "Global Alliances & Placement Framework"] },
+    { name: "JECRC University", logo: "jecrc.png", loc: "Jaipur, Rajasthan", type: "engineering", info: ["B.Tech CSE, MBA, MCA, Research", "Build Your World Academic Philosophy", "Massive Global Corporate Collaborations"] },
+    { name: "VGU (Vivekananda Global University)", logo: "vgu.png", loc: "Jaipur, Rajasthan", type: "other", info: ["B.Tech, Law, Management, Architecture", "NAAC Grade A+ Accredited Structure", "Elite Tier Placements Ecosystem"] },
+    { name: "Ajeenkya DY Patil University", logo: "adypu.png", loc: "Pune, Maharashtra", type: "other", info: ["B.Tech, Innovation Design, Law, MBA", "The Innovation University Architecture", "Premium Enterprise Placements Drive"] },
+    { name: "Hindustan College of Arts & Science", logo: "hindustan_arts.png", loc: "Chennai, Tamil Nadu", type: "other", info: ["BCA, BBA, Media Sciences, Allied Bio", "Affiliated to University of Madras", "Christian Minority Institution Legacy"] },
+
+    // --- Pre-existing Directory ---
     { name: "Accurate Institute of Management & Technology", logo: "Accurate.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, MBA, MCA, Poly", "Highest Pack: 85 LPA", "AICTE Approved, AKTU Affiliated"] },
     { name: "Jaipuria Institute of Management", logo: "Jaipuria.png", loc: "Sector 62, Noida", type: "management", info: ["Flagship PGDM, MBA Programs", "Top 50 Private B-Schools", "NAAC Grade 'A' Accredited"] },
     { name: "Delhi Technical Campus (DTC)", logo: "delhitechnical.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech CSE, B.Arch, MBA", "Affiliated to GGSIPU, New Delhi", "Premium Infrastructure Hub"] },
     { name: "IEC Group of Institutions", logo: "iec.png", loc: "Knowledge Park I, Greater Noida", type: "engineering", info: ["B.Tech, B.Pharm, MBA, MCA", "Established 1999 Network", "AKTU Counselling Partner"] },
-    { name: "Sharda University", logo: "sharda.png", loc: "Knowledge Park III, Greater Noida", type: "engineering", info: ["B.Tech, Law, Medical, Management", "NAAC A+ Multidisciplinary Campus", "100% Scholarship System"] },
+    { name: "Sharda University", logo: "sharda.png", loc: "Knowledge Park III, Greater Noida", type: "other", info: ["B.Tech, Law, Medical, Management", "NAAC A+ Multidisciplinary Campus", "100% Scholarship System"] },
     { name: "Bennett University (Times Group)", logo: "Bennet.png", loc: "TechZone II, Greater Noida", type: "engineering", info: ["B.Tech, Law, Media, BBA", "Ivy League Style Curriculum", "Premium Placements Direct Core"] },
     { name: "Mangalmay Institute of Management & Tech", logo: "Mangalmay.png", loc: "Knowledge Park II, Greater Noida", type: "management", info: ["MBA, BBA, BCA, B.Ed", "Excellent Local Placement Ties", "Approved by AICTE"] },
     { name: "Farayan Institute / Network", logo: "farai.png", loc: "Greater Noida, Delhi NCR", type: "other", info: ["Skill and Technical Diplomas", "Direct Entry & Seat Allocation", "Industry Focused Labs"] },
@@ -970,7 +975,6 @@
     { name: "Sparsh Group of Institutions", logo: "sparsh.png", loc: "Greater Noida Area", type: "management", info: ["PGDM, Executive Management", "Industry Linkage Focus", "Direct Consultancy Allocations"] },
     { name: "GNIOT Group of Institutions", logo: "GNIOT.png", loc: "Knowledge Park II, Greater Noida", type: "engineering", info: ["B.Tech, MCA, MBA, Commerce", "Massive Modern Campus Base", "High Placement Conversion Track"] },
     { name: "NIET (Autonomous Campus)", logo: "NIET.png", loc: "Knowledge Park II, Greater Noida", type: "engineering", info: ["B.Tech, M.Tech, B.Pharm, MCA", "First Autonomous Institute in GN", "Top Tier Cloud Learning Labs"] },
-    { name: "HIET Group of Institutions", logo: "hiet.png", loc: "Ghaziabad, NCR", type: "engineering", info: ["B.Tech, Polytechnic Diplomas", "Value-Driven Academic Track", "AKTU/BTE UP Approved"] },
     { name: "Kailash Institute of Nursing & Pharmacy", logo: "kailash.png", loc: "Knowledge Park III, Greater Noida", type: "other", info: ["B.Sc Nursing, D.Pharm, Healthcare", "Attached to Premium Kailash Hospital", "100% Practical Training Placements"] },
     { name: "Sunder Deep Group of Institutions", logo: "sunder.png", loc: "Ghaziabad, NCR", type: "engineering", info: ["B.Tech, B.Arch, B.Pharm, BBA", "Sprawling Multidisciplinary Campus", "AKTU Counseling Assistance Available"] },
     { name: "Hierank Business School", logo: "Hierank.png", loc: "Sector 62, Noida", type: "management", info: ["MBA, BBA, BCA Programs", "CCSU & AKTU Affiliations", "Sector 62 Metro Connected Campus"] },
@@ -1026,7 +1030,6 @@
   }
 
   function filterColleges(category) {
-    // Update active tab styling
     const buttons = document.querySelectorAll('.filter-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
